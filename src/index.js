@@ -149,4 +149,14 @@ bot.command('airdrop', async (ctx) => {
 
 bot.command('dashboard', (ctx) => {
   ctx.reply('🖥 Open your Token OS dashboard:',
-    Markup.inlineKeyboard([[Markup.button.url('​​​​​​​​​​​​​​​​
+    Markup.inlineKeyboard([[Markup.button.url('Open Dashboard', DASHBOARD_URL)]]));
+});
+
+bot.catch((err, ctx) => {
+  console.error(`[bot] Error:`, err);
+  ctx.reply('⚠️ Something went wrong.').catch(() => {});
+});
+
+bot.launch().then(() => console.log('TOKEN OS bot running'));
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
